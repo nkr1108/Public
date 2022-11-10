@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+
+<html>
+<title>
+	Python, ML and AI
+</title>
+
+<head>
+
+</head>
+
+<body onload="document.getElementById('demo').innerHTML = Date()">
+
+<b>
+<h1>Table of Contents</h1></b>
+<p id="contents">
+<ul><code>
+  <li><a href="#NP">Numpy</a></li>
+  <li><a href="#PD">Pandas</a></li>
+  <li><a href="#DV">Data Visualization</a></li>
+  <li><a href="#Functions">Functions</a></li>
+  <li><a href="#UsefulCode">Useful Code</a></li>
+</code>
+</ul>
+</p>
+
+
+
+
+
+<hr id="NP" style="height:5px;border-width:0;color:gray;background-color:grey">
+
+<p id="Numpy">
+<b><h2 style="color:blue">Numpy - 1d array library (each element is of same data type), elements accessed via index</h2></b>
+<ul><code>
+  <li><a href="#NPLibrary">Import Necessary numpy Libraries</a></li>
+  <li><a href="#NParange">arange() method</a></li>
+  <li><a href="#NPlinspace">linspace() method</a></li>
+  <li><a href="#NPrand">rand(), randn(), randint() method</a></li>
+  <li><a href="#NPtranspose">transpose, copy, size, dtype, max, min, mean, std, NaN, pi</a></li>
+  <li><a href="#NPmatrixfile">copy matrix into file</a></li>
+  <li><a href="#NParithmetic">Arithmetic Operations on array/matrix</a></li>
+  <li><a href="#NParithmeticvector">Arithmetic operation on Vector/Array vectors</a></li>
+  <li><a href="#NPmorematrix">more matrix</a></li>
+  <li><a href="#NPfilter">filter elements using logical operations on numpy array</a></li>
+</code>
+</ul>
+</p>
+
+
+<hr>
+<p id="NPLibrary">
+<b style="color:blue">Import numpy library</b><br>
+<code>import numpy as np</code> <i># importing numpy Library</i><br>
+<code>np.array([1,2,3,4,5])</code> <i># creating numpy array from list</i><br>
+<code>np.array([[1,2,3],[4,5,6],[7,8,9]])</code> <i># creating numpy array matrix from nested list</i><br>
+</p>
+<code><a href="#NP">Back to numpy</a><br>
+<a href="#top">Top</a></code>
+
+<p id="NParange">
+<b style="color:blue">arange() method</b><br>
+<code>np.arange(start=0,stop=10,step=5)</code> # <b>arange</b> method to crate numpy array (stop is excluded), step - defaults to 1, start and stop are optional<br>
+<code>np.arange(start=1,stop=10).reshape((3,3))</code> # <b>reshape</b> method - to change the dimension of array<br>
+<code>np.arange(1,10).reshape(3,3).shape</code> # <b>shape</b> method to tell # of rows and # of columns<br>
+<code>np.arange(1,10).reshape(3,3).reshape(9).ndim</code> # <b>ndim</b> tells the dimension of the array
+</p>
+<code><a href="#NP">Back to numpy</a><br>
+<a href="#top">Top</a></code>
+
+<p id="NPlinspace">
+<b style="color:blue">linspace() method</b><br>
+<code>np.linspace(start,stop,num)</code> # <b>linspace</b> method to creates numpy array, Stop is included, num is total number of data<br>
+</p>
+<code><a href="#NP">Back to numpy</a><br>
+<a href="#top">Top</a></code>
+
+<p id="NPrand">
+<b style="color:blue">rand(), randn(), randint() method</b><br>
+<code>np.random.rand(10)</code> # <b></b> generates array of 10 random numbers between 0 and 1<br>
+<code>np.random.rand(10,5)</code> # <b></b> generates matrix of 10x5 random numbers between 0 and 1<br>
+<code>np.random.randn(5)</code> # <b></b> generates array of 5 random numbers between 0 and 1 with normal distribution (mean/median ~ 0)<br>
+<code>np.random.randn(5,5)</code> # <b></b> generates matrix of 5x5 random numbers between 0 and 1 with normal distribution (mean/median ~ 0)<br>
+<code>np.random.randint(1,5,10)</code> # <b></b>Integer array between 1 and 5 (excluded) with size 10<br>
+<code>np.random.randint(1,5)</code> # <b></b>If you leave 3rd argument, it returns single number<br>
+<code>np.random.randint(1,5,[5,5])</code> # <b></b>Integer matrix between 1 and 5 (excluded) with size 5x5<br>
+</p>
+<code><a href="#NP">Back to numpy</a><br>
+<a href="#top">Top</a></code>
+
+<p id="NPtranspose">
+<b style="color:blue">transpose, copy, size, dtype, max, min, mean, std, NaN, pi</b><br>
+<code>np.transpose(matrix1) or matrix1.T</code> # <b>transpose</b> of the matrix
+<code>matrix1 = matrix2.copy()</code> # <b>copy</b> function to copy content of matrix<br>
+<code>np.size</code> # size of the array<br>
+<code>np.dtype</code> # data type of the array<br>
+<code>np.max()</code> # returns <b>max</b> from the array/matrix<br>
+<code>np.min()</code> # returns <b>min</b> from the array/matrix<br>
+<code>np.mean</code> # <b>mean</b><br>
+<code>np.std</code> # <b>standard deviation</b><br>
+<code>np.NaN</code> # Number not defined<br>
+<code>np.pi</code> # <b>pi</b><br>
+<code>Matrix1 @ matrix2</code> # <b></b>Linear Algebra matrix multiplication
+</p>
+<code><a href="#NP">Back to numpy</a><br>
+<a href="#top">Top</a></code>
+
+<p id="NPmatrixfile">
+<b style="color:blue">Copy matrix into file</b><br>
+<code>np.save('/content/drive/My drive/…',np.array) </code> # Saves single matrix in a file on google drive<br>
+<code>np.savez('path',a=np.array,b=np.array2)</code> # Saves multiple matrix in a file on google drive<br>
+<code>np.array = np.load('file path') </code># Load the matrix from the file<br>
+<code>np.savetxt('path',np.array,delimiter=',') </code># Saves the file in text file format, easy to read<br>
+<code>np.loadtxt('path',delimiter=',') </code># Loads the file in an array / matrix
+</p>
+<code><a href="#NP">Back to numpy</a><br>
+<a href="#top">Top</a></code>
+
+<p id="NParithmetic">
+<b style="color:blue">Arithmetic Operations on array/matrix</b><br>
+<code>
+a = np.arange(1,6)<br>
+b = np.arange(2,7)<br>
+print("addition:",a+b)<br>
+print("substraction:",b-a)<br>
+print("multiplication:",a*b)<br>
+print("division:",a/b)<br>
+print("inverse:",1/a)<br>
+print("pow:",a**b)
+</code>
+</p>
+<code><a href="#NP">Back to numpy</a><br>
+<a href="#top">Top</a></code>
+
+<p id="NParithmeticvector">
+<b style="color:blue">Arithmetic operation on Vector/Array vectors</b><br>
+<code>
+z = np.add(u, v)<br>
+c = np.subtract(a, b)<br>
+c = np.multiply(a, b)<br>
+c = np.divide(a, b)<br>
+c = np.dot(a,b)
+</code>
+</p>
+<code><a href="#NP">Back to numpy</a><br>
+<a href="#top">Top</a></code>
+
+<p id="NPmorematrix">
+<b style="color:blue">more matrix</b><br>
+<code>
+np.zero([3,4]) # <b></b>Creates 3x4 matrix of float (default is float)<br>
+np.zero([3,4],int) # Creates 3x4 matrix of int<br>
+np.ones([3,4]) # Creates 3x4 matrix of ones float (default is float)<br>
+np.eye(5) # Creates identity matrix of 5 rows/columns<br>
+</code>
+</p>
+<code><a href="#NP">Back to numpy</a><br>
+<a href="#top">Top</a></code>
+
+<p id="NPfilter">
+<b style="color:blue">filter elements using logical operations on numpy array </b><br>
+<code>
+print("greater than 0\n",rand_arr[rand_arr>0])<br>
+print("\nless than 0\n",rand_arr[rand_arr<0])<br>
+print("\n another example",rand_arr>0)<br>
+<br>
+</code>
+</p>
+<code><a href="#NP">Back to numpy</a><br>
+<a href="#top">Top</a></code>
+</p>
+
+<!-- all about Pandas -->
+
+<hr id="PD" style="height:5px;border-width:0;color:gray;background-color:grey">
+
+<p id="Pandas">
+<b><h2 style="color:green">Pandas - All kinds of analysis</h2></b>
+<ul><code>
+  <li><a href="#PDSeries">Pandas Series</a></li>
+  <li><a href="#PDDataframe">Pandas Dataframe</a></li>
+  <li><a href="#PDFiles">Pandas and Files</a></li>
+  <li><a href="#PDAccess">Accessing Rows and Columns</a></li>
+  <li><a href="#PDreview">Pandas - Descriptive Analysis</a></li>
+  <li><a href="#PDloc">Pandas loc</a></li>
+  <li><a href="#PDiloc">Pandas iloc</a></li>
+  <li><a href="#PDLogicalReferencing">Logical Referencing</a></li>
+  <li><a href="#PDGroupBy">groupby method</a></li>
+  <li><a href="#PDapply">apply method</a></li>
+  <li><a href="#PDsortvalues">sort_values method</a></li>
+  <li><a href="#PDDateFunction">Date Function</a></li>
+  <li><a href="#PDDrop">Columns/Rows Manipulation</a></li>
+  <li><a href="#PDCombineDataframe">Combining Dataframes</a></li>
+  <li><a href="#PDDataWrangling">Data Wrangling</a></li>
+
+</code>
+</ul>
+</p>
+
+<hr>
+
+
+<p>
+
+<p>
+<b id="PDSeries" style="color:green">Pandas Series </b><br>
+<code>import pandas as pd</code><i> # importing Pandas Library</i><br>
+<code>series_a = pd.Series(['a','b','c','d'])</code><i> # creates Pandas Series series_a using list</i><br>
+<code>series_b = pd.Series(['a','b','c','d'],index=[1,2,3,4])</code><i> # creates Pandas Series series_b with index which is again a list</i><br>
+<code>series_b[0]</code><i> # first element of series_b</i><br>
+<code>series_b[:3]</code><i> # slicing - start till 3rd element</i><br>
+<code>series_b[[0,1,2]]</code><i> # slicing - using list of index value</i><br>
+</p>
+
+<code><a href="#PD">Back to Pandas</a><br>
+<a href="#top">Top</a></code><br><hr>
+
+<p id="PDDataframe">
+<b style="color:green">Pandas DataFrames </b><br>
+<code>df = pd.DataFrame(dictionary)</code><i> # creates Pandas DataFrame using dictionary</i><br>
+<code>df = pd.DataFrame(np.random.randn(5,2),columns=['a','b'])</code> <i> # creates data frame with random numbers with 5 rows and 2 columns and adds column header</i><br>
+<code>dfnew = df.copy()</code><i> # copy dataframe </i><br>
+<code>df.index</code><i> # prints dataframe index </i><br>
+<code>df.columns</code><i> # returns columns names as list (type - class 'pandas.core.indexes.base.Index'</i><br>
+<code>df.columns.tolist()</code><i> # saves columns to a list, index can also be saved to a list likewise </i><br>
+
+</p>
+
+<code><a href="#PD">Back to Pandas</a><br>
+<a href="#top">Top</a></code><br><hr>
+
+<p id="PDFiles">
+<b style="color:green">Pandas and Files</b><br>
+<code>from google.colab import drive</code><br>
+<code>drive.mount('/content/drive')</code><br>
+<code>df = pd.read_csv('/content/drive/MyDrive/Colab Notebooks/abc.csv')</code><i> # read csv file using read_csv method</i><br>
+<code>df_new = pd.read_csv('/content/drive/MyDrive/Colab Notebooks/abc.csv',na_values=['missing','inf'])</code><i> # reads, replaces missing or inf with NaN</i><br>
+<code>df = pd.read_csv('file path.csv',header=None)</code><i> # read csv file using read_csv method, in case there is no header, using header option</i><br>
+<code>df = pd.to_csv('file path.csv')</code><i> # write the dataframe to the csv file</i><br>
+<code>df = pd.to_csv('file path.csv',index=False)</code><i> # write the dataframe to the csv file, does not include index</i><br>
+<code>df = pd.read_excel('file path.xlsx')</code><i> # read xlsx file using read_excel method</i><br>
+<code>df = pd.to_excel('file path.xlsx',index=False)</code><i> # write to xlsx file using to_excel method</i><br>
+</p>
+
+<code><a href="#PD">Back to Pandas</a><br>
+<a href="#top">Top</a></code><br>
+<hr>
+
+
+<p id="PDAccess">
+<b style="color:green">Accessing Rows/Columns without loc/iloc</b><br>
+<code>df[:1]</code><i> # returns 1st row</i><br>
+<code>df[2:3]</code><i> # returns dataframe row at index 2 (3rd row)</i><br>
+<code>df[::2]</code><i> # returns dataframe rows with step 2</i><br>
+<code>df[['col1','col2']]</code><i> # returns dataframe with column col1 and col2</i><br>
+<code>df['col1']</code><i> # returns Series with column col1</i><br>
+
+
+</p>
+
+<code><a href="#PD">Back to Pandas</a><br>
+<a href="#top">Top</a></code><br>
+<hr>
+
+<p id="PDreview">
+<b style="color:green">Pandas - Descriptive Analysis</b><br>
+<code>df.shape</code><i> # displays number of rows, columns</i><br>
+<code>print("There are", df.shape[0], 'rows and', df.shape[1], "columns.")</code><br>
+<code>df.dtypes</code><i> # displays type of all the columns, individual features can also used</i><br>
+<code>df.info()</code><i> # displays, column types, number of non-null values etc</i><br>
+<code>df.head()</code><i> # displays top 5 rows</i><br>
+<code>df.tail()</code><i> # displays bottom 5 rows</i><br>
+<code>df.sample(10,random_state=1)</code><i> # displays 10 sample rows</i><br>
+<code>df['col1'].unique() OR df['col1'].nunique()</code><i> # returns array of unique values for column col1 OR returns number of unique values</i><br>
+<code>df.describe(include='all').T</code><i> # statistical summary of full dataframe and then transpose it</i><br>
+<code>df['price'].mean()</code><i> # returns mean of column 'price'</i><br>
+<code>df['stock'].value_counts()</code><i> # displays unique columns and their count</i><br>
+<code>df['stock'].value_counts(normalize=True)</code><i> # displays unique columns and their count</i><br>
+
+</p>
+
+<code><a href="#PD">Back to Pandas</a><br>
+<a href="#top">Top</a></code>
+
+
+<hr id="PDloc">
+
+
+<p>
+<b style="color:green">Pandas loc</b><br>
+<code>df.loc[[1]]</code><i> # returns row 2nd row with index 1</i><br>
+<code>df.loc[[1,3],['col1','col2']]</code><i> # returns row 1 row and row 3 and column col1 and col2</i><br>
+<code>df.loc[1:3,['col1','col2']]</code><i> # returns rows from index 1 and 3 (excluded) and column col1 and col2</i><br>
+<code>df.loc[1:3,'col1':'col2']</code><i> # returns rows from index 1 and 3 (excluded) and from column col1 to col2 (included)</i><br>
+<code>df.loc[:,'col1':'col2']</code><i> # returns all rows and from column col1 to col2 (included)</i></p>
+
+<code><a href="#PD">Back to Pandas</a><br>
+<a href="#top">Top</a></code><br>
+
+<hr id="PDiloc">
+
+<p>
+<b style="color:green">Pandas iloc - users only index</b><br>
+<code>df.iloc[[1,3],[1,3]]</code><i> # returns row 1 and 3 and columns 1 and 3</i><br>
+<code>df.iloc[1:3,1:3]</code><i> # returns row 1 to 3 and columns 1 to 3</i><br>
+<code>df.iloc[1:3]</code><i> # returns row 1 to 3 and all columns</i>
+</p>
+<code><a href="#PD">Back to Pandas</a><br>
+<a href="#top">Top</a></code><br>
+
+<hr id="PDLogicalReferencing">
+
+<p>
+<b style="color:green">Pandas DataFrames - Logical Referencing</b><br>
+<code>df['col1']>1</code><i> # returns Pandas Series with True or False depending on the condition</i><br>
+<code>df[df['col1']>1]</code><i> # returns DataFrame with all the rows meeting condition</i><br>
+<code>data.loc[data['Rooms']>7,'Type'].value_counts()</code><i> # returns DataFrame with Rooms greater than 7 and count of types</i><br>
+</p>
+
+<code><a href="#PD">Back to Pandas</a><br>
+<a href="#top">Top</a></code><br>
+
+<hr id="PDGroupBy">
+
+<p>
+<b style="color:green">groupby method</b><br>
+<code>df.groupby('catcol1')['numcol1'].mean()</code><i> # group by categorical variable, returns mean of numcol1</i><br>
+</p>
+
+<code><a href="#PD">Back to Pandas</a><br>
+
+<a href="#top">Top</a></code><br>
+
+<hr id="PDapply">
+
+<p>
+<b style="color:green">apply method</b><br>
+<i>define own function to apply to any column of dataframe</i><br>
+<pre>def profit(s):
+	return (s+s*0.1)
+	
+df['new_col'] = df['old_col'].apply(profit)
+</pre>
+</p>
+
+<code><a href="#PD">Back to Pandas</a><br>
+<a href="#top">Top</a></code><br>
+
+<hr id="PDsortvalues">
+
+<p>
+<b style="color:green">Sort Values</b><br>
+<code>df.sort_values(by='new_col1',ascending=False,inplace=True)</code><i> # group by categorical variable, returns mean of numcol1</i><br>
+<code>df.reset_index(drop=True,inplace=True)</code> <i> # resets the index</i>
+</p>
+
+<code><a href="#PD">Back to Pandas</a><br>
+<a href="#top">Top</a></code><br>
+
+<hr id="PDDateFunction">
+
+<p>
+<b style="color:green">Date Function</b><br>
+<code>df['date'] = pd.to_datetime(df['date'],dayfirst=True)</code><i> # convert date column to datetime type</i><br>
+<code>df['year'] = df['date'].dt.year</code><i> # extract year to column year</i><br>
+<code>df['month'] = df['date'].dt.month</code><i> # extract month to column month</i><br>
+<code>df['day'] = df['date'].dt.day</code><i> # extract day to column day</i><br>
+</p>
+
+<code><a href="#PD">Back to Pandas</a><br>
+<a href="#top">Top</a></code><br>
+
+<hr id="PDDrop">
+
+<p>
+<b style="color:green">Columns/Rows Manipulation</b><br>
+<code>df['new'] = df['old']>100</code><i> # add new column based on condition</i><br>
+<code>df.drop(columns=['col1','col2'],inplace=True)</code><i> # drops col1 and col2 from the dataframe and saves it</i><br>
+<code>df.drop(['col1','col2'],axis=1,inplace=True)</code><i> # drops col1 and col2 from the dataframe and saves it (another way)</i><br>
+<code>df.drop(1,axis=0,inplace=True)</code><i> # drops row at index 1, add code to reset index ?????</i><br>
+<code>df.rename(columns={'OdName':'NName', 'AreaName':'Continent'}, inplace=True)</code><i> # renames column using dictionary of old and new names</i><br>
+
+</p>
+
+<code><a href="#PD">Back to Pandas</a><br>
+<a href="#top">Top</a></code><br>
+
+<hr id="PDCombineDataframe">
+
+<p>
+<h3 style="color:green">Combining Dataframes</h3>
+	<ul style="list-style-type:square;">
+	<code>
+		<li><b>Using concat method</b>
+			<ul style="list-style-type:circle;">
+				<li>pd.concat([df1,df2],axis=0)<i> # returns new dataframe concat by rows </i>
+				<li>pd.concat([df1,df2],axis=1)<i> # returns new dataframe concat by columns </i>
+			</ul>
+		<li><b>Using merge method</b>
+			<ul style="list-style-type:circle;">
+				<li>pd.merge(df1,df2,how='outer',on='CommonColumn')<i> # returns new dataframe, works like outer join on given column </i>
+				<li>pd.merge(df1,df2,how='inner',on='CommonColumn')<i> # returns new dataframe, works like inner join on given column </i>
+				<li>pd.merge(df1,df2,how='right',on='CommonColumn')<i> # returns new dataframe, works like right join on given column </i>
+				<li>pd.merge(df1,df2,how='left',on='CommonColumn')<i> # returns new dataframe, works like left join on given column </i>
+			</ul>
+		<li><b>Using Join Method - works similar to merge method</b>
+			<ul style="list-style-type:circle;">
+				<li>df1.join(df2,how='outer')<i> # returns new dataframe, works like outer join on given column </i>
+				<li>df1.join(df2,how='inner')<i> # returns new dataframe, works like inner join on given column </i>
+				<li>df1.join(df2,how='right')<i> # returns new dataframe, works like right join on given column </i>
+				<li>df1.join(df2,how='left')<i> # returns new dataframe, works like left join on given column </i>
+			</ul>
+	</code>
+	</ul>
+
+</p>
+<code><a href="#PD">Back to Pandas</a><br>
+<a href="#top">Top</a></code>
+
+<hr id="PDDataWrangling">
+
+<p>
+<h3 style="color:green">Data Wrangling</h3>
+	<ul style="list-style-type:square;">
+	<code>
+		<li><b>Check Duplicate Values</b>
+			<ul style="list-style-type:circle;">
+				<li>df.duplicated().sum() <i> # returns total number of duplicate rows </i>
+				<li>df.drop_duplicates(inplace=True) <i> # returns clean data after dropping duplicates </i>
+				<li>df.reset_index(drop=True,inplace=True) <i> # resets the index</i>
+			</ul>
+		<li><b>Missing Values, ? or blank or NA or 0 or NaN</b>
+			<ul style="list-style-type:circle;">
+				<li>df.isnull().sum() <i> # returns total number of missing values by column </i>
+				<li>replace '?' with NaN => df = df.replace('?',np.NaN)
+				<li>df['col1'] = data['col1'].replace(['missing','inf'],np.NaN)
+				<li>replace NaN with mean => df['col1'].replace(np.NaN,df['col1'].mean(),inplace=True) <i> # mean is impacted by presence of outliers so median is preferred for such cases. For categorical data, model is preferred</i>
+				<li>drop row with NaN => df.dropna(subset=['col'],axis=0,inplace=True)
+			</ul>
+		<li><b>Data format Issue</b>
+			<ul style="list-style-type:circle;">
+				<li>df['price'] = df['price'].astype('int') # could be float
+				<li>df['date'] = pd.to_datetime(df['date'])
+				<li>df['col1'].apply(type).value_counts() # returns counts of value types
+			</ul>
+		<li><b>Data normalization (centering/scaling) - changes values from zeros to one</b>
+			<ul style="list-style-type:circle;">
+				<li>Scaling => new value = old/max
+				<li>Min-Max => new value = (old-min)/(max-min)
+				<li>Z-Score => new value = (old-average(meu))/(Standard Deviation(sigma)) (-3 to 3)	
+			</ul>
+		<li><b>Data binning - convert numerical into categorical variables, like age - into 1-5, 5-10 or so on</b>
+			<ul style="list-style-type:circle;">
+				<li>bins = np.linspace(min(df['age']),max(df['age']),4)
+				<li>group_names = ['low','medium','high']
+				<li>df['age-binned']=pd.cut(df['age'],bins,labels=group_names,include_lowest=True)
+			</ul>
+		<li><b>Categorical values into numerical - One-hot encoding - gas and diesel, add 2 new columns/features and assign 1 and 0</b>
+			<ul style="list-style-type:circle;">
+				<li>pd.get_dummies(df['fuel'])
+			</ul>
+	</code>
+	</ul>
+
+</p>
+<code><a href="#PD">Back to Pandas</a><br>
+<a href="#top">Top</a></code>
+</p>
+
+
+
+<hr id="DV" style="height:5px;border-width:0;color:gray;background-color:grey">
+
+
+<p id="Visualization">
+<h2 style="color:blue"><b>Data Visualization</b></h2>
+
+<p id="DataVisualization">
+<ul><code>
+  <li><a href="#DVQuanQualCompare">Quantitative and Qualitative</a></li>
+  <li><a href="#DVLibraries">Import Necessary Libraries</a></li>
+  <li><a href="#DVCommonStatements">Common Statements</a></li>
+  <li><a href="#DVHistogram">Histogram</a></li>
+  <li><a href="#DVBoxplot">Boxplot</a></li>
+  <li><a href="#DVBarChart">Bar Chart</a></li>
+  <li><a href="#DVLineChart">Line Chart</a></li>
+  <li><a href="#DVScatterPlot">Scatter Plot</a></li>
+  <li><a href="#DVLinerModelPlot">lmplot (Linear Model Plot)</a></li>
+  <li><a href="#DVJoinplot">Joinplot</a></li>
+  <li><a href="#DVViolinplot">Violinplot</a></li>
+  <li><a href="#DVStripSwarm">Strip and Swarm Plot</a></li>
+  <li><a href="#DVCatplot">Catplot</a></li>
+  <li><a href="#DVPairplot">Pairplot</a></li>
+  <li><a href="#DVHeatmap">Heatmap</a></li>
+  <li><a href="#DVPlotly">Plotly</a></li>
+  <li><a href="#DVReferences">References</a></li>
+
+</code>
+</ul>
+</p>
+
+<hr>
+
+<p id="DVQuanQualCompare">
+<table>
+<td valign="top" style="width:45%">
+	<h3 style="color:blue">Quantitative / Numerical Variable</h3>
+	<ul style="list-style-type:square;"><code>
+		<li>Univariate Analysis - Analysing one Variable
+			<ul style="list-style-type:circle;">
+				<li>displot() - Visualize the distribution of variable (also called histogram)
+				<li>boxplot() or violinplot() - To check specifically for outliers
+			</ul>
+		<li>Bivariate Analysis – Relationship between 2 variables
+			<ul style="list-style-type:circle;">
+				<li>joinplot() or pairplot()
+				<li>lmplot() – Scatter plot with a best fit line
+			</ul>
+		<li>Multivariate Analysis – Relationship between more than 2 variables
+			<ul style="list-style-type:circle;">
+				<li>corr() – Correlation matrix followed by
+				<li>heatmap() – Visualize the correlation matrix
+				<li>pairplot() – Combination of Scatter plots and individual histogram plots for all numerical variables in the dataset. Also, can assign a categorical variable using hue as an add on)		
+			</ul>
+	</code></ul>
+	</td>
+
+	
+	<td valign="top" style="width:55%">
+	<h3 style="color:blue">Qualitative / Categorical Variable</h3>
+	<ul style="list-style-type:square;"><code>
+		<li>Univariate Analysis – Analysing one variable
+			<ul style="list-style-type:circle;">
+				<li>countplot() – Visualize the distributions of categorical variable
+			</ul>
+		<li>Quantitative vs Qualitative Variables - Analyse how a quantitative variable varies across categorical variable(s)
+			<ul style="list-style-type:circle;">
+				<li>boxplot() or violinplot() – To check specifically for outliers
+				<li>stripplot() or swarmplot() – Scatter plot across a categorical variable (also helps in checking for outliers)
+				<li>barplot() – Can also create a clustered bar chart (assign a categorical variable to hue) or a stacked bar chart (2 bar plots with different colors)
+				<li>pointplot()
+				<li>lineplot() – Best when looking at trends (Time-related variable along the x-axis)
+				<li>catplot() or factorplot() – Analysing a quantitative variable across 2 categorical variables with one variable having a high number of categories
+			</ul>
+	</code></ul>
+	</td>
+	</table>	
+
+
+
+</p>
+<code><a href="#DV">Back to Data Visualization</a><br>
+<a href="#top">Top</a></code>
+</p>
+
+<hr>
+
+<p id="DVLibraries">
+<b style="color:blue">Import Necessary Libraries</b><br>
+<code>import matplotlib.pyplot as plt</code><i> # Libraries to help with data visualization</i><br>
+<code>import seaborn as sns</code> <i># Libraries to help with data visualization</i><br>
+<code>import plotly.express as px;</code><i> # makes it interactive</i><br>
+<code>%matplotlib inline</code> <i># command to tell python to display the graphs in jupyter notebook</i><br>
+</p>
+<code><a href="#DV">Back to Data Visualization</a><br>
+<a href="#top">Top</a></code>
+
+<hr>
+
+<p id="DVCommonStatements">
+<b style="color:blue">Common statements which can be used with any plots</b><br>
+<code>plt.title('Histogram Title')</code><br>
+<code>plt.xlim(0,50000)</code><br>
+<code>plt.ylim(0,70)</code><br>
+<code>plt.xlabel('x axis data')</code><br>
+<code>plt.ylabel('Frequency')</code><br>
+<code>plt.legend(bbox_to_anchor=[0.1,1];</code> <i># placement of legend</i><br>
+<code>sns.axes_style('whitegrid')</code><br>
+<code>plt.figure(figsize=(20,7))</code><i> # increase the size of the plot to make it look better, used with above two statements</i><br>
+<code>plt.show()</code><i> # nice to put this at the end</i><br>
+<code>plt.axis('off')</code><i> # turns off both x axis and y axis</i><br>
+</p>
+
+<code><a href="#DV">Back to Data Visualization</a><br>
+<a href="#top">Top</a></code>
+<hr>
+<p id="DVHistogram">
+<table>
+<td valign="top" style="width:60%">
+<b style="color:blue">Histogram - univariate plot to show distribution of a continuous numerical variable</b><br>
+<code>sns.histplot(data=df,x='price',bins=5,binwidth=5,color='orange');</code><i> # bins, binwidth, color are optional, semi colon is added to get rid of address</i><br>
+<code>binwidth = 2xIQR/cube root of number of rows</code><br>
+<code>bins=Range/binwidth</code><br>
+<code>sns.histplot(data=df,x='col1',kde=True)</code> <i># <b>KDE</b> stands for <b>Kernel Density Estimation</b> - visualizes the distribution over continuous interval. = Total Frequency of each bin x Probability - simply - composition of each histogram, which components have how much weightage</i><br>
+<code>sns.histplot(data=df,x='col1',kde=True,hue='col2')</code> <i><b>hue</b> is mostly used for adding another feature, mostly categorical variable</i><br>
+<code>sns.FacetGrid(df,col='col2').map(sns.histplot,'col1',color='orange');</code> <i># Another variation, when we want separate histrogram (subplot) for all values of categorical variable</i><br>
+<code>sns.histplot(data=data,x='Distance',stat='density')</code><i> # stat (optional): It measures the frequency, count, density, or probability</i><br>
+<code>sns.displot(data=data,x='Landsize',kind='kde')</code><i> # displot is same as histplot, but can accept kind attribute</i><br>
+</td>
+<td valign="top" style="width:40%">
+<img src="Histogram.jpg" alt="HeatMap" style="width:600px;height:200px;">
+</td>
+</table>
+</p>
+
+<code><a href="#DV">Back to Data Visualization</a><br>
+<a href="#top">Top</a></code>
+
+<hr>
+
+<p id="DVBoxplot">
+<table>
+<td valign="top" style="width:50%">
+<b style="color:blue">Boxplot - univariate plot to show distribution of a continuous numerical variable</b><br>
+<code>sns.boxplot(data=df,x='numvar',color='green');</code><i> # boxplot on numvar on X axis</i><br>
+<code>sns.boxplot(data=df,x='categorical var',y=numerical var');</code><i> # multiple box plots</i><br>
+<code>sns.boxplot(data=data,x='Distance_bins',y='Price',showfliers=False);</code><i> # showfliers=False makes outlier disappear on the plot</i><br>
+<i><b>Positively Skewed (Skewed Right)</b> When the median is closer to the left of the box, whisker is shorter on the left end of the box</i><br>
+<i><b>Negatively Skewed (Skewed Left)</b> When the median is closer to the right of the box, whisker is shorter on the right end of the box</i><br>
+<i><b>Visualization of 5 number summary</b> Min, 1st Quartile, Median, 3rd Quartile, Max</i><br>
+</td>
+<td valign="top" style="width:25%">
+<img src="RightSkewed.jpg" alt="RightSkewed" style="width:300px;height:200px;">
+</td>
+<td valign="top" style="width:25%">
+<img src="LeftSkewed.jpg" alt="RightSkewed" style="width:300px;height:200px;">
+</td>
+</table>
+</p>
+
+
+<code><a href="#DV">Back to Data Visualization</a><br>
+<a href="#top">Top</a></code>
+<hr>
+
+<p id="DVBarChart">
+<table>
+<td valign="top" style="width:50%">
+<b style="color:blue">Bar Chart or Count Plot- show counts of obervations of categorical variables using bars</b><br>
+<code>sns.countplot(data=df,x='body_stype');</code><i> # bar chart of body style</i><br>
+<code>sns.countplot(data=df,x='body_stype',hue='fuel_type');</code><i> # bar chart of body style and fuel type</i><br>
+<code>plt.xticks(rotation=90)</code><i> # to rotate the text on the x label vertical</i><br>
+<code>sns.barplot(data=df,x='catvar1',y='nvar1',orient="v");</code><i> # barplot to see different category over numerical data</i><br>
+</td>
+<td valign="top" style="width:25%">
+<img src="CountPlot.jpg" alt="CountPlot" style="width:350px;height:200px;">
+</td>
+<td valign="top" style="width:25%">
+<img src="BarPlot.jpg" alt="BarPlot" style="width:350px;height:200px;">
+</td>
+</table>
+</p>
+<code><a href="#DV">Back to Data Visualization</a><br>
+<a href="#top">Top</a></code>
+<hr>
+
+
+
+
+
+<p id="DVLineChart">
+<table>
+<td valign="top" style="width:70%">
+
+<b style="color:blue">Line Plot - multiple y values with a partular x value, time value</b><br>
+<code>flights=sns.load_dataset("flights")<br>
+sns.lineplot(data=flights,x='month',y='passengers');</code><i> # run this and see how it shows up</i><br>
+- <i> The light blue shaded area is actually the <b>'Confidence Interval'</b> of the y value for each x value, <b> <br>
+- Confidence Interval</b> is the range of values around that estimate that are believed to contain the true value of that estimate with certain probability<br>
+- Confidence Interval can be switched off by following CI option<br>
+- good link to study <a href="https://www.statisticshowto.com/probability-and-statistics/confidence-interval/" target="new">Confidential level</a></i><br>
+<code>sns.lineplot(data=flights,x='month',y='passengers',ci=False);</code> #<i> see the CI is False</i><br>
+<code>sns.lineplot(data=flights,x='month',y='passengers',ci=False,hue='year');</code> <i># relationship between two variables for different categories by <b>hue</b> parameter</i><br>
+<code>sns.lineplot(data=flights,x='month',y='passengers',ci=False,hue='year',style='year');</code> <i># adding <b>style</b> causes variations in the line chart</i><br>
+<code>sns.lineplot(data=flights,x='month',y='passengers',ci=False,hue='year',style='year',markers=True);</code> <i># adding <b>markers</b> causes markers in the line chart</i><br>
+</td>
+<td valign="top" style="width:30%">
+<img src="LineChart.jpg" alt="LineChart" style="width:350px;height:200px;">
+</td>
+</table>
+</p>
+<code><a href="#DV">Back to Data Visualization</a><br>
+<a href="#top">Top</a></code>
+<hr>
+
+
+
+
+
+<p id="DVScatterPlot">
+<table>
+<td valign="top" style="width:70%">
+<b style="color:blue">Scatter Plot between two numerical values</b><br>
+<code>sns.scatterplot(data=df,x='engine_size',y='horsepower');</code><i> # basic scatter plot</i><br>
+<code>sns.scatterplot(data=df,x='engine_size',y='horsepower',hue='fuel_type');</code><i> # adding hue for categorical variable</i><br>
+<code>sns.scatterplot(data=df,x='engine_size',y='horsepower',hue='fuel_type',style='fuel_type');</code><i> # adding style for variation</i><br>
+</td>
+<td valign="top" style="width:30%">
+<img src="ScatterPlot.jpg" alt="ScatterPlot" style="width:350px;height:200px;">
+</td>
+</table>
+</p>
+<code><a href="#DV">Back to Data Visualization</a><br>
+<a href="#top">Top</a></code>
+
+<hr>
+
+<p id="DVLinerModelPlot">
+<table>
+<td valign="top" style="width:70%">
+<b style="color:blue">lmplot (Liner Model Plot)</b><br>
+<code>sns.lmplot(data=df,x='curb_weitht',y='horsepower');</code><i> # Liner Model Plot, notice the gray shade, which is confidence interval</i><br>
+<code>sns.lmplot(data=df,x='curb_weitht',y='horsepower',hue='fuel_type',ci=False);</code><i> # adding additional variable by <b>hue</b> and turning off confidence interval</i><br>
+<code>sns.lmplot(data=df,x='curb_weitht',y='horsepower',col='fuel_type',ci=False);</code><i> # instead of adding additional variable by <b>hue</b>, we are adding seperate plot by <b>col</b> option</i><br>
+</td>
+<td valign="top" style="width:30%">
+<img src="LMPlot.jpg" alt="LinerModelPlot" style="width:350px;height:200px;">
+</td>
+</table>
+</p>
+<code><a href="#DV">Back to Data Visualization</a><br>
+<a href="#top">Top</a></code>
+
+<hr>
+
+<p id="DVJoinplot">
+<table>
+<td valign="top" style="width:60%">
+<b style="color:blue">Joinplot - visualize bivariate and univariage on the same plot (scatter plot and histogram)</b><br>
+<code>sns.joinplot(data=df,x='engine_size',y='horsepower');</code><i> # join plot, with scatter plot and histogram combined</i><br>
+<code>sns.joinplot(data=df,x='engine_size',y='horsepower',kind='hex');</code><i> # see </i><b> <code>kind = 'hex'</code></b> <i>which splits the plotting window into several hexacons and the color of each hexagon denotes the number of data points in it</i><br>
+<code>sns.joinplot(data=df,x='engine_size',y='horsepower',kind='kde');</code><i> # see </i><b> <code>kind = 'kde'</code></b> <i>which splits the plotting window into heat map sort of thing</i><br>
+<code>sns.joinplot(data=df,x='engine_size',y='horsepower',kind='reg');</code><i> # see </i><b> <code>kind = 'reg'</code></b> <i>with join points to find best fitting line or curve</i><br>
+<code>plt.colorbar()</code><i># adds a seperate axis indicating the color scale in this plot</i><br>
+
+</td>
+<td valign="top" style="width:20%">
+<img src="JoinPlot.jpg" alt="JoinPlot" style="width:250px;height:300px;">
+</td>
+<td valign="top" style="width:20%">
+<img src="JoinPlot2.jpg" alt="JoinPlot" style="width:250px;height:300px;">
+</td>
+</table>
+</p>
+<code><a href="#DV">Back to Data Visualization</a><br>
+<a href="#top">Top</a></code>
+
+<hr>
+
+<p id="DVViolinplot">
+<table>
+<td valign="top" style="width:60%">
+<b style="color:blue">Violin plot - allows to visualize the distribution of a numeric variable for several groups</b><br>
+<code>sns.violinplot(data=df,x='horsepower');</code><i> # violin plot - box plot and density combined</i><br>
+<code>sns.violinplot(data=df,x='engine_size',y='fuel_type');</code><i> # violin plot - box plot and density combined</i><br>
+<code>sns.violinplot(data=df,x='engine_size',y='fuel_type',orient='v');</code><i> # violin plot - orient verticle (v)</i><br>
+<code>sns.violinplot(data=df,x='engine_size',y='fuel_type',palette='bright');</code><i> # change the color of palette, other values are deep, muted, pastel, dark, colorblind</i><br>
+</td>
+<td valign="top" style="width:40%">
+<img src="ViolinPlot.jpg" alt="ViolinPlot" style="width:450px;height:250px;">
+</td>
+</table>
+</p>
+<code><a href="#DV">Back to Data Visualization</a><br>
+<a href="#top">Top</a></code>
+
+<hr>
+
+<p id="DVStripSwarm">
+<table>
+<td valign="top" style="width:56%">
+<b style="color:blue">Strip plot and swarm plot</b><br>
+<code>sns.stripplot(data=df,x='engine_size');</code><i> # strip plot is basically scatter plot that differentiates different categories, scatter plot of just one variable, good alternative to box plot or violin plot for comparing data distributions when we are fewer data points</i><br>
+<code>sns.stripplot(data=df,x='body_stype',y='engine_size');</code> # <i> first is categorical variable and send is numerical</i><br>
+<code>sns.stripplot(data=df,x='body_stype',y='engine_size',jitter=True);</code> # <i> <b>jitter</b> makes overlapping look nicer</i><br>
+<code>sns.stripplot(data=df,x='body_stype',y='engine_size',hue='number_of_doors',jitter=True);</code> # <i> <b>hue</b> parameter to display observations for subgroups</i><br>
+<code>sns.swarmplot(data=df,x='body_stype',y='engine_size');</code> # <i> very similar to strip plot, but seperation of dots is more ordered</i><br>
+<code>sns.swarmplot(data=df,x='body_stype',y='engine_size',hue='number_of_doors');</code> # <i> <b>hue</b> parameter to display observations for subgroups</i><br>
+<code>sns.swarmplot(data=df,x='body_stype',y='engine_size',hue='number_of_doors',dodge=True);</code> # <i> both dots are separate</i><br>
+</td>
+<td valign="top" style="width:22%">
+<img src="StripPlot.jpg" alt="ViolinPlot" style="width:400px;height:250px;">
+</td>
+<td valign="top" style="width:22%">
+<img src="SwarmPlot.jpg" alt="ViolinPlot" style="width:400px;height:250px;">
+</td>
+</table>
+</p>
+<code><a href="#DV">Back to Data Visualization</a><br>
+<a href="#top">Top</a></code>
+
+<hr>
+
+<p id="DVCatplot">
+<table>
+<td valign="top" style="width:60%">
+<b style="color:blue">Cat Plot - show relationship between numerical variable and one or more categorical variables</b><br>
+<code>sns.catplot(data=df,x='fuel_type',y='horsepower');</code><i> combines all the plots, with default being strip plot</i><br>
+<code>sns.catplot(data=df,x='fuel_type',y='horsepower',hue='body_style',kind='point');</code><i> includes vertical bars with 95% confidence levels</i><br>
+<code>sns.catplot(data=df,x='fuel_type',y='horsepower',hue='body_style',kind='bar');</code><i> includes vertical bars with 95% confidence levels</i><br>
+<code>sns.catplot(data=df,x='fuel_type',y='horsepower',hue='body_style',col='drive_wheels',kind='bar');</code><i> includes vertical bars with 95% confidence levels</i><br>
+<code>sns.catplot(data=df,x='fuel_type',y='horsepower',hue='body_style',col='drive_wheels',kind='box',palette='bright');</code><i> includes vertical bars with 95% confidence levels</i><br>
+<code>sns.catplot(data=df,x='fuel_type',y='horsepower',hue='body_style',col='drive_wheels',kind='box',palette='swarm');</code><i> includes vertical bars with 95% confidence levels</i><br>
+<code>sns.catplot(x='year',y='totalprod',data=honey,col='state',kind='point',col_wrap=5);</code><i> total honey production by year, with diffierent plot for each state</i><br>
+
+</td>
+<td valign="top" style="width:40%">
+<img src="CatPlot.jpg" alt="CatPlot" style="width:500px;height:300px;">
+</td>
+</table>
+</p>
+<code><a href="#DV">Back to Data Visualization</a><br>
+<a href="#top">Top</a></code>
+
+<hr>
+
+<p id="DVPairplot">
+<table>
+<td valign="top" style="width:60%">
+<b style="color:blue">Pair Plot - shows relationship between two numeric variables for each pair of columns in the dataset</b><br>
+<code>sns.pairplot(data=df[['col1','col2','col3','col4','col5']]);</code><i> # generates lots of scatter plots and histogram</i><br>
+<code>sns.pairplot(data=df,vars=['col1','col2','col3','col4','col5'],hue='number_of_doors');</code><i># generates lots of scatter plots and normal distribution curve for all categorical variable as well</i><br>
+<code>sns.pairplot(data=df,vars=['col1','col2','col3','col4','col5'],hue='number_of_doors',corner=True,diag_kind='kde');</code><i> # reduces clutter by eliminating duplicate plots</i><br>
+</td>
+<td valign="top" style="width:40%">
+<img src="PairPlot.jpg" alt="PairPlot" style="width:500px;height:300px;">
+</td>
+</table>
+</p>
+<code><a href="#DV">Back to Data Visualization</a><br>
+<a href="#top">Top</a></code>
+
+<hr>
+
+<p id="DVHeatmap">
+<table>
+<td valign="top" style="width:60%">
+<b style="color:blue">Heat Map</b><br>
+<code>sns.heatmap(data=df[['ncol1','ncol2','ncol3','ncol4']].corr());</code><i> # way to express coorelation between each pair of columns</i><br>
+<code>sns.heatmap(data=df[['ncol1','ncol2','ncol3','ncol4']].corr(),annot=True,cbar=False);</code><i> # add numbers and remove color bar</i><br>
+<code>sns.heatmap(data=df[['ncol1','ncol2','ncol3','ncol4']].corr(),annot=True,cbar=False,cmap='YlGnBu');</code><i> # change colors</i><br>
+<code>sns.heatmap(data=df[['ncol1','ncol2','ncol3','ncol4']].corr(),annot=True,cbar=False,cmap='Spectral');</code><i> # change colors</i><br>
+<code>sns.heatmap(data.corr(),annot=True,cmap='Spectral',vmin=-1,vmax=1);</code><i> # change colors</i><br>
+</td>
+<td  style="width:40%">
+<img src="HeatMap.jpg" alt="HeatMap" style="width:500px;height:300px;">
+</td>
+</table>
+</p>
+<code><a href="#DV">Back to Data Visualization</a><br>
+<a href="#top">Top</a></code>
+
+<hr>
+
+<p id="DVPlotly">
+<b style="color:blue">Plotly - Interactive Visualizations</b><br>
+<code>!pip install plotly;</code><i> # install in case its not installed</i><br>
+<code>import plotly.express as px;</code><i> # makes it interactive</i><br>
+<pre>
+his = px.histogram(df,x='price)    # histogram
+his.show()
+</pre>
+<pre>
+bar = px.bar(df,x='price',y='horsepower')    # bar plot
+bar.show()
+</pre>
+<pre>
+scat = px.scatter(df,x='price',y='horsepower')    # scatter plot
+scat.show()
+</pre>
+<pre>
+fig = px.box(df,x='cvar1',y='nvar1',points='all) # point enables both box plot and strip plot
+fig.show()
+</pre>
+<pre>
+fig_3d = px.scatter_3d(df,x='fuel_type',y='horsepower',z='price',color='horsepower')
+fig_3d.show()
+fig_3d.write_html('scatter_3d.html')
+</pre>
+
+</p>
+<code><a href="#DV">Back to Data Visualization</a><br>
+<a href="#top">Top</a></code>
+
+<hr>
+
+<p id="DVReferences">
+<h3 style="color:blue"><b>References</b></h3>
+<ul><code>
+  <li><a href="http://seaborn.pydata.org/examples/index.html" target="new">Seaborn</a></li>
+  <li><a href="https://towardsdatascience.com/data-visualization-which-graphs-should-i-use-55e214ee9cf1" target="new">Seaborn - When to use which plot</a></li>
+    <li><a href="https://keydifferences.com/difference-between-discrete-and-continuous-variable.html" target="new">Discrete and Continuous Variable</a></li>
+
+
+</code>
+</ul>
+</p>
+
+
+
+
+<hr id="UC" style="height:5px;border-width:0;color:gray;background-color:grey">
+
+<p id="UsefulCode">
+<b>Useful Codes</b><br><br>
+<b>generate random list between 2 numbers of certain size</b>
+<code><pre>
+import random
+randomlist = [] # blank list
+for i in range(0,5): # size = 5 
+  n = random.randint(20,30) # between 10 and 30
+  randomlist.append(n)
+print(randomlist)
+</pre>
+</code>
+
+<br>
+</p>
+<code><a href="#top">Top</a></code>
+
+<hr id="End" style="height:5px;border-width:0;color:gray;background-color:grey">
+
+<p>
+<i><code> Disclaimer - Above work is actually compilation of my learning of Python, ML and AI. If you feel, any example resembles examples used on any website, it may be purely coincidental</code></i>
+</p>
+</body>
+</html>
